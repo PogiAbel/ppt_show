@@ -15,12 +15,22 @@ Future<bool> openPPT(String filePath) async {
 Future<bool> checkExePath() async {
   bool result = false;
   ProcessResult process;
+  if (GlobalData.getExePath == null ||
+      GlobalData.getExePath.isEmpty ||
+      !GlobalData.getExePath
+          .toString()
+          .toLowerCase()
+          .contains("powerpnt.exe")) {
+    return false;
+  }
   try {
-    process = await Process.run(GlobalData.getExePath, ['/o', '']);
+    process = await Process.run(
+        'if', ['exist', GlobalData.getExePath, 'echo', 'true'],
+        runInShell: true);
   } catch (e) {
     throw Exception('Could not open file');
   }
-  result = process.stdout.toString().toLowerCase().contains('powerpnt.exe');
+  result = process.stdout.toString().toLowerCase().contains('true');
   return result;
 }
 

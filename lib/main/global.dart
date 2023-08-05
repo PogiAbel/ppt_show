@@ -7,11 +7,6 @@ class GlobalData {
       StreamController<List<SelectableItem>>.broadcast();
   static List<SelectableItem> _selectedItems = [];
 
-  // static List<SelectableItem> _addKeyToList(List<String> items) {
-  //   int key = 1;
-  //   return items.map((item) => SelectableItem(key, item)).toList();
-  // }
-
   static List<SelectableItem> get listItems => _selectedItems;
 
   static set items(List<SelectableItem> value) {
@@ -41,7 +36,9 @@ class GlobalData {
       _itemsController.stream;
 
   static get getExePath => _exeFilePath;
-  static set setExePath(String value) => _exeFilePath = value;
+  static set setExePath(String value) {
+    _exeFilePath = value;
+  }
 }
 
 class SelectableItem {

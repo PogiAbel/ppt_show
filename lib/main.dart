@@ -13,7 +13,7 @@ class PptApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'PowerPoint Launcher',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
